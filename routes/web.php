@@ -8,6 +8,7 @@ use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\RedemptionController;
 use App\Http\Controllers\PointsLedgerController;
 use App\Http\Controllers\RarityController;
+use App\Http\Controllers\ShopifyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,3 +35,24 @@ Route::resource('qrcodes', QRCodeController::class);
 Route::resource('rarities', RarityController::class);
 
 Route::post('/qrcode/scan', [QRCodeController::class, 'scan'])->name('qrcode.scan');
+
+use App\Services\ShopifyService;
+
+/*Route::get('/shopify/products', function (ShopifyService $shopifyService) {
+    $products = $shopifyService->getProducts();
+    return response()->json($products);
+});
+
+Route::get('/shopify/customers', function (ShopifyService $shopifyService) {
+    $customers = $shopifyService->getCustomers();
+    return response()->json($customers);
+});
+
+Route::get('/shopify/orders', function (ShopifyService $shopifyService) {
+    $orders = $shopifyService->getOrders();
+    return response()->json($orders);
+});*/
+Route::get('/shopify/products', [ShopifyController::class, 'getProducts']);
+Route::get('/shopify/customers', [ShopifyController::class, 'getCustomers']);
+Route::get('/shopify/orders', [ShopifyController::class, 'getOrders']);
+Route::get('/shopify/sync-products', [ShopifyController::class, 'syncShopifyProducts']);

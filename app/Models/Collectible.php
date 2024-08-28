@@ -19,8 +19,19 @@ class Collectible extends Model
         'loyalty_points',
         'nfts_included',
         'rarity_id',
+        'shopify_id',
+        'title',
+        'description', // mapped from body_html
+        'vendor',
+        'product_type',
+        'shopify_created_at',
+        'shopify_updated_at',
+        'price',
+        'inventory_quantity',
+        'sku',
+        'image_src',
+        // other fields as needed
     ];
-
     /**
      * The QRCode relationship.
      *
